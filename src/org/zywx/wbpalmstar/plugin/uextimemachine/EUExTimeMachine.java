@@ -4,6 +4,8 @@ import java.util.HashSet;
 
 import org.zywx.wbpalmstar.engine.EBrowserView;
 import org.zywx.wbpalmstar.engine.universalex.EUExBase;
+import org.zywx.wbpalmstar.widgetone.dataservice.WWidgetData;
+
 import android.app.Activity;
 import android.app.ActivityGroup;
 import android.app.LocalActivityManager;
@@ -22,8 +24,10 @@ public class EUExTimeMachine extends EUExBase {
 	public static final String TAG = "EUExTimeMachine";
 	private static String currentTag = null;
 	private HashSet<String> hashSet = new HashSet<String>();
+	private WWidgetData mWWidgetData = null;
 	public EUExTimeMachine(Context context, EBrowserView inParent) {
 		super(context, inParent);
+		mWWidgetData = inParent.getCurrentWidget();
 	}
 
 	/**
@@ -96,7 +100,7 @@ public class EUExTimeMachine extends EUExBase {
 				Activity activity = mgr.getActivity(TAG + timeMachine.getTmId());
 				if (activity != null && activity instanceof TimeMachineActivity) {
 					TimeMachineActivity timeMachineActivity = ((TimeMachineActivity) activity);
-					timeMachineActivity.setData(timeMachine, new CarouselAdapter.OnItemClickListener() {
+					timeMachineActivity.setData(mWWidgetData, timeMachine, new CarouselAdapter.OnItemClickListener() {
 
 						@Override
 						public void onItemClick(CarouselAdapter<?> parent, View view, int position, long id) {

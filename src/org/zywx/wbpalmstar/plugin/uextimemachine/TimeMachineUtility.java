@@ -3,18 +3,22 @@ package org.zywx.wbpalmstar.plugin.uextimemachine;
 import java.io.IOException;
 import java.io.InputStream;
 import org.zywx.wbpalmstar.base.BUtility;
+import org.zywx.wbpalmstar.widgetone.dataservice.WWidgetData;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public class TimeMachineUtility {
 
-	public static Bitmap getImage(Context ctx, String imgUrl) {
+	public static Bitmap getImage(Context ctx, String imgUrl, WWidgetData mWWidgetData) {
 		if (imgUrl == null || imgUrl.length() == 0) {
 			return null;
 		}
 		Bitmap bitmap = null;
 		InputStream is = null;
+		imgUrl = BUtility.makeRealPath(imgUrl, mWWidgetData.getWidgetPath(),
+		        mWWidgetData.m_wgtType);
 		try {
 			if (imgUrl.startsWith(BUtility.F_Widget_RES_SCHEMA)) {
 				is = BUtility.getInputStreamByResPath(ctx, imgUrl);
