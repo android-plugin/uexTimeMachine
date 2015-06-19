@@ -7,7 +7,8 @@
     <org.zywx.wbpalmstar.plugin.uextimemachine.Carousel
         android:id="@+id/plugin_timemachine_carousel"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent" 
+        android:padding="20dip"/>
 
     <org.zywx.wbpalmstar.plugin.uextimemachine.PageIndicator
         android:id="@+id/plugin_timemachine_page_indictor"

@@ -2,6 +2,8 @@ package org.zywx.wbpalmstar.plugin.uextimemachine;
 
 import java.util.List;
 import org.zywx.wbpalmstar.plugin.uextimemachine.TimeMachine.ItemInfo;
+import org.zywx.wbpalmstar.widgetone.dataservice.WWidgetData;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -24,7 +26,8 @@ public class CarouselItemAdapter extends BaseAdapter {
 	private LayoutInflater inflater;
 	private static final int ITEM_WIDTH = 260;
 
-	public CarouselItemAdapter(Context context, List<ItemInfo> infos) {
+	public CarouselItemAdapter(Context context, List<ItemInfo> infos,
+	        WWidgetData mWWidgetData) {
 		list = infos;
 		inflater = LayoutInflater.from(context);
 		views = new CarouselImageView[list.size()];
@@ -33,7 +36,7 @@ public class CarouselItemAdapter extends BaseAdapter {
 			CarouselImageView imageView = new CarouselImageView(context);
 			imageView.setIndex(i);
 			ItemInfo itemInfo = list.get(i);
-			Bitmap bitmap = loadBitmapByUrl(itemInfo.getImgUrl(), itemWidth);
+			Bitmap bitmap = loadBitmapByUrl(itemInfo.getImgUrl(), itemWidth, mWWidgetData);
 			imageView.setImageBitmap(bitmap);
 			views[i] = imageView;
 		}
@@ -59,8 +62,8 @@ public class CarouselItemAdapter extends BaseAdapter {
 		return views[position];
 	}
 
-	private Bitmap loadBitmapByUrl(String url, int maxWidth) {
-		Bitmap bitmap = TimeMachineUtility.getImage(inflater.getContext(), url);
+	private Bitmap loadBitmapByUrl(String url, int maxWidth, WWidgetData mWWidgetData) {
+		Bitmap bitmap = TimeMachineUtility.getImage(inflater.getContext(), url, mWWidgetData);
 		if (bitmap == null) {
 			return null;
 		}

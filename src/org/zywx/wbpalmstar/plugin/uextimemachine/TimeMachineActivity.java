@@ -1,6 +1,8 @@
 package org.zywx.wbpalmstar.plugin.uextimemachine;
 
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
+import org.zywx.wbpalmstar.widgetone.dataservice.WWidgetData;
+
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,10 +30,10 @@ public class TimeMachineActivity extends Activity {
 				.getResIdID("plugin_timemachine_page_indictor"));
 	}
 
-	public void setData(TimeMachine timeMachine,
+	public void setData(WWidgetData mWWidgetData, TimeMachine timeMachine,
 			CarouselAdapter.OnItemClickListener listener) {
 		CarouselItemAdapter adapter = new CarouselItemAdapter(this,
-				timeMachine.getList());
+				timeMachine.getList(), mWWidgetData);
 		carousel.setAdapter(adapter);
 		pageIndicator.setTotalPageSize(adapter.getCount());
 		pageIndicator.setCurrentPage(carousel.getSelectedItemPosition());
