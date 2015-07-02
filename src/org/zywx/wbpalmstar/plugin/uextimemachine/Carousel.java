@@ -483,7 +483,18 @@ public class Carousel extends CarouselSpinner implements
 		return idx;
 
 	}
-
+	
+	private int offsetChildrenLeftAndRight() {
+		int offset = 0;
+		for (int i = getChildCount() - 1; i >= 0; i--) {
+			getChildAt(i).offsetLeftAndRight(offset);
+			if (android.os.Build.VERSION.SDK_INT >= 16) {
+				getChildAt(i).invalidate();
+			}
+		}
+		return offset;
+	}
+    
 	/**
 	 * Transform an item depending on it's coordinates
 	 */
@@ -494,8 +505,8 @@ public class Carousel extends CarouselSpinner implements
 		transformation.clear();
 		transformation.setTransformationType(Transformation.TYPE_MATRIX);
 		// Center of the item
-		float centerX = (float) child.getWidth() + (child.getWidth() / 2), centerY = (float) child
-				.getHeight() / 2 - child.getHeight() * centerYFactor;
+		float centerX = (float) child.getWidth() + (child.getWidth() / 2) + offsetChildrenLeftAndRight(), centerY = (float) child
+				.getHeight() / 2 - child.getHeight() * centerYFactor + offsetChildrenLeftAndRight();
 		// Save camera
 		mCamera.save();
 		// Translate the item to it's coordinates
