@@ -22,10 +22,6 @@ public class TimeMachineActivity extends Activity {
 				.getResLayoutID("plugin_timemachine_main_layout"));
 		carousel = (Carousel) findViewById(EUExUtil
 				.getResIdID("plugin_timemachine_carousel"));
-		if (Build.VERSION.SDK_INT >= 14) {
-			// 4.0以上默认关闭硬件加速
-			carousel.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		}
 		pageIndicator = (PageIndicator) findViewById(EUExUtil
 				.getResIdID("plugin_timemachine_page_indictor"));
 	}
