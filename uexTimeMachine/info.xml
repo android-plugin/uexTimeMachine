@@ -3,7 +3,7 @@
     <plugin uexName="uexTimeMachine" version="3.0.3" build = "3">
         <info>3:修复没有旋转效果问题</info>
         <build>2:修改图片显示不全的问题（后面的图片，右侧有一部分没显示出来）。</build>
-        <build>1:修改进入子应用时图片不显示的问题。</info>
+        <build>1:修改进入子应用时图片不显示的问题。</build>
         <build>0:旋转木马动画功能插件</build>
 	</plugin>
 </uexplugins>
