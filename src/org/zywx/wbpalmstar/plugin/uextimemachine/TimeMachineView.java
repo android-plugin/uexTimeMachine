@@ -3,23 +3,26 @@ package org.zywx.wbpalmstar.plugin.uextimemachine;
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 import org.zywx.wbpalmstar.widgetone.dataservice.WWidgetData;
 
-import android.app.Activity;
-import android.os.Build;
-import android.os.Bundle;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
+import android.widget.FrameLayout;
 
-public class TimeMachineActivity extends Activity {
+public class TimeMachineView extends FrameLayout {
 
 	private PageIndicator pageIndicator;
 	private Carousel carousel;
+    private Context mContext;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(EUExUtil
-				.getResLayoutID("plugin_timemachine_main_layout"));
+    public TimeMachineView(Context context) {
+        super(context);
+        this.mContext = context;
+        initView();
+    }
+
+	private void initView() {
+        LayoutInflater.from(mContext).inflate(EUExUtil
+                .getResLayoutID("plugin_timemachine_main_layout"),this,true);
 		carousel = (Carousel) findViewById(EUExUtil
 				.getResIdID("plugin_timemachine_carousel"));
 		pageIndicator = (PageIndicator) findViewById(EUExUtil
@@ -28,7 +31,7 @@ public class TimeMachineActivity extends Activity {
 
 	public void setData(WWidgetData mWWidgetData, TimeMachine timeMachine,
 			CarouselAdapter.OnItemClickListener listener) {
-		CarouselItemAdapter adapter = new CarouselItemAdapter(this,
+		CarouselItemAdapter adapter = new CarouselItemAdapter(mContext,
 				timeMachine.getList(), mWWidgetData);
 		carousel.setAdapter(adapter);
 		pageIndicator.setTotalPageSize(adapter.getCount());
