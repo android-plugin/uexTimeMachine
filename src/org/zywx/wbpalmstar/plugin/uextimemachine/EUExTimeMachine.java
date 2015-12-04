@@ -55,6 +55,9 @@ public class EUExTimeMachine extends EUExBase {
         }
         try {
             final String tmId = params[0];
+            if(views.containsKey(tmId)){
+				return;
+            }
             final int x = Integer.parseInt(params[1]);
             final int y = Integer.parseInt(params[2]);
             final int w = Integer.parseInt(params[3]);
