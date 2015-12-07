@@ -58,10 +58,10 @@ public class EUExTimeMachine extends EUExBase {
             if(views.containsKey(tmId)){
 				return;
             }
-            final int x = Integer.parseInt(params[1]);
-            final int y = Integer.parseInt(params[2]);
-            final int w = Integer.parseInt(params[3]);
-            final int h = Integer.parseInt(params[4]);
+            final int x = (int) Float.parseFloat(params[1]);
+			final int y = (int) Float.parseFloat(params[2]);
+			final int w = (int) Float.parseFloat(params[3]);
+			final int h = (int) Float.parseFloat(params[4]);
             currentTag = tmId;
             TimeMachineView timeMachineView = new TimeMachineView(mContext);
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(w, h);
