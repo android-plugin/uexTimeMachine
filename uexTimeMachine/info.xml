@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
-    <plugin uexName="uexTimeMachine" version="3.0.4" build = "4">
-        <info>4:去掉插件中的ActivityGroup,配合引擎升级</info>
+    <plugin uexName="uexTimeMachine" version="3.0.5" build = "5">
+        <info>5:修复id覆盖关闭不掉的情况，修复传入小数错误的问题</info>
+        <build>4:去掉插件中的ActivityGroup,配合引擎升级</build>
         <build>3:修复没有旋转效果问题</build>
         <build>2:修改图片显示不全的问题（后面的图片，右侧有一部分没显示出来）。</build>
         <build>1:修改进入子应用时图片不显示的问题。</build>
